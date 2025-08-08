@@ -4,21 +4,24 @@ let nombres =[];
 function agregarAmigo() {
     if ( document.getElementById("amigo").value == '')
         {
-            alert("Por favor introdusca un nombre");
+            alert("Por favor introduzca un nombre");
             document.getElementById("amigo").value='';
         }
         else{
-            nombres.push=document.getElementById("amigo").value;
+            nombres.push(document.getElementById("amigo").value);
             document.getElementById("amigo").value ='';
+            actualizarListaAmigos();
             }           
-    
+   return; 
 }
 
 
 function actualizarListaAmigos() {
-    
-    let  lista = document.getElementById("listaAmigos"); //esta es la lista que esta dentro del html
 
+    console.log(nombres)
+    const  lista = document.getElementById("listaAmigos"); //esta es la lista que esta dentro del html
+
+    lista.innerHTML ="";
     for (let i = 0; i < nombres.length; i++) {
       //nombres[i] es el nombre de acuerdo a la posicion del arreglo donde se almacenan los amigos
 
@@ -28,4 +31,5 @@ function actualizarListaAmigos() {
 
         lista.appendChild(li); //haciendo a li hijo de la lista del html
     }
+    return;
 }
