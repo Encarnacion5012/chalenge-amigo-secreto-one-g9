@@ -19,17 +19,37 @@ function agregarAmigo() {
 function actualizarListaAmigos() {
 
     console.log(nombres)
-    const  lista = document.getElementById("listaAmigos"); //esta es la lista que esta dentro del html
-
-    lista.innerHTML ="";
+    limpiarlista();
     for (let i = 0; i < nombres.length; i++) {
       //nombres[i] es el nombre de acuerdo a la posicion del arreglo donde se almacenan los amigos
-
-        let li =document.createElement("li"); //Crear elemento li para la lista ul en el html
-        
-        li.textContent = nombres[i]; //texto que tendra el elemntoo li
-
-        lista.appendChild(li); //haciendo a li hijo de la lista del html
+        agregarElentos_li(nombres[i]);
     }
     return;
 }
+
+
+function sortearAmigo()  {
+    if (nombres[nombres.length - 1] == ""){
+        alert("Aun no has agregado ningun nombre");
+    }
+}
+
+function agregarElentos_li (nombre) {  //Agregar elementos li a la lista html fucion especifica
+    const lista = document.getElementById("listaAmigos"); //esta es la lista que esta dentro del html
+    let li =document.createElement('li'); //Crear elemento li para la lista ul en el html
+    li.textContent = nombre; //texto que tendra el elemntoo li
+    lista.appendChild(li); //haciendo a li hijo de la lista del html
+    return;
+}
+
+function limpiarlista() {
+    const  lista = document.getElementById("listaAmigos"); //esta es la lista que esta dentro del html
+
+    lista.innerHTML ="";
+}
+
+function generarNumero() {
+      return Math.floor(Math.random() * nombres.length);
+}
+
+console.log(generarNumero());
