@@ -18,8 +18,8 @@ function agregarAmigo() {
 
 function actualizarListaAmigos() {
 
-    console.log(nombres)
-    limpiarlista();
+    console.log(nombres);
+    cambiarTextoElemnto("listaAmigos","");
     for (let i = 0; i < nombres.length; i++) {
       //nombres[i] es el nombre de acuerdo a la posicion del arreglo donde se almacenan los amigos
         agregarElentos_li(nombres[i]);
@@ -28,10 +28,14 @@ function actualizarListaAmigos() {
 }
 
 
-function sortearAmigo()  {
-    if (nombres[nombres.length - 1] == ""){
-        alert("Aun no has agregado ningun nombre");
+function sortearAmigo()  { //funcion para mostrar amigos secretos
+    if (nombres.length === 0 ){
+        alert("Aun no has agregado ningun amigo");
     }
+    else{
+        cambiarTextoElemnto("listaAmigos" ,`El amigo secreto es: ${nombres[generarNumero()]}`);
+    }
+    return;
 }
 
 function agregarElentos_li (nombre) {  //Agregar elementos li a la lista html fucion especifica
@@ -42,13 +46,15 @@ function agregarElentos_li (nombre) {  //Agregar elementos li a la lista html fu
     return;
 }
 
-function limpiarlista() {
-    const  lista = document.getElementById("listaAmigos"); //esta es la lista que esta dentro del html
 
-    lista.innerHTML ="";
+
+function cambiarTextoElemnto(nombreElemto, texto) { //funcion para cambiar texto de elementos dentro del html
+    const elemento = document.getElementById(nombreElemto); //se usa tambien para limpiar la lista
+    elemento.innerHTML = texto;
+    return;
 }
 
-function generarNumero() {
+function generarNumero() { //Generar numero para el sorteo de numeros
       return Math.floor(Math.random() * nombres.length);
 }
 
